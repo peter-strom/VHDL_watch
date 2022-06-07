@@ -8,7 +8,8 @@ package VHDL_klock_pkg is
 
     type time_array_t is array (0 to 5) of std_logic_vector (3 downto 0);
     function seconds_to_time_array(seconds : in natural) return time_array_t;
-		component counter is
+	
+    component counter is
         generic (
             CNT_1S_G : natural := 50000000;
             CNT_LIM_G : natural := 86400 -- 3600 * 24 
@@ -29,9 +30,9 @@ package body VHDL_klock_pkg is
 		
 
     function seconds_to_time_array(seconds : in natural) return time_array_t is
-        variable hh : natural;
-        variable mm : natural;
-        variable ss : natural;
+        variable hh : natural range 0 to 23;
+        variable mm : natural range 0 to 59;
+        variable ss : natural range 0 to 59;
 		variable h_H : natural;
         variable h_L : natural;
         variable m_H : natural;
@@ -45,11 +46,11 @@ package body VHDL_klock_pkg is
         ss := (seconds mod 3600) mod 60;
 
         h_H := hh / 10;
-        h_L := hh - h_H;
+        h_L := hh - h_H*10;
         m_H := mm / 10;
-        m_L := mm - m_H;
+        m_L := mm - m_H*10;
         s_H := ss / 10;
-        s_L := ss - s_H;
+        s_L := ss - s_H*10;
 
         return (std_logic_vector(to_unsigned(h_H, 4)),
 					std_logic_vector(to_unsigned(h_L, 4)),
