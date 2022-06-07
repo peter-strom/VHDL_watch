@@ -24,7 +24,7 @@ begin
     process (clk, rst_n) is
     begin
 		if (rst_n = '0') then
-			cnt_s <= 86350;
+			cnt_s <= 0;
 			
 		
 		elsif (rising_edge(clk)) then
