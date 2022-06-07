@@ -41,7 +41,10 @@ begin
         wait for 2 * CLK_PERIOD;
         rst_n_s <= '0';
 		  wait for 5 * CLK_PERIOD;
+		  rst_n_s <= '1';
         wait;
     end process;
+	 
+	 
 
     end architecture;
