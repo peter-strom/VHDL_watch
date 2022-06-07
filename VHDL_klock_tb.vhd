@@ -40,13 +40,9 @@ begin
     begin
         
         rst_n_s <= '0';
-<<<<<<< HEAD
-		  wait for 5 * CLK_PERIOD;
-		  rst_n_s <= '1';
-=======
         wait for 3 * CLK_PERIOD;
         rst_n_s <= '1';
->>>>>>> 3c4e8b01e7f33089c6250713bc710132f5c2a957
+
         wait;
     end process;
 	 
