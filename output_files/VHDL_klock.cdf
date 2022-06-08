@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(5CEBA4F23) Path("C:/git/VHDL_klocka/output_files/") File("VHDL_klock.sof") MfrSpec(OpMask(1));
+		Device PartName(5CEBA4F23) Path("C:/Users/danie/git/clock/VHDL_klocka/output_files/") File("VHDL_klock.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
