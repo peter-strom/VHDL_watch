@@ -21,7 +21,7 @@ architecture behaviour of VHDL_klock is
 	--t_ = timer
 
 	signal out_time_s : time_array_t;
-	signal w_cnt_s, t_cnt_s : natural;
+	signal cnt_s, w_cnt_s, t_cnt_s : natural;
 	signal start_key_n_f, w_start_key_n_s, t_start_key_n_s : std_logic;
 	signal h_key_n_f, w_h_key_n_s, t_h_key_n_s : std_logic;
 	signal m_key_n_f, w_m_key_n_s, t_m_key_n_s : std_logic;
@@ -130,19 +130,21 @@ begin
 				s_key_flank_v := '0';
 			end if;
 			if (func_sw = '1') then -- wach
-				out_time_s <= seconds_to_time_array(w_cnt_s);
+			--	out_time_s <= seconds_to_time_array(w_cnt_s);
+				cnt_s <= w_cnt_s;
 				w_start_key_n_s <= start_key_flank_v;
 				w_h_key_n_s <= h_key_flank_v;
 				w_m_key_n_s <= m_key_flank_v;
 				w_s_key_n_s <= s_key_flank_v;
 			else -- timer
-				out_time_s <= seconds_to_time_array(t_cnt_s);
+			--	out_time_s <= seconds_to_time_array(t_cnt_s);
+				cnt_s <= t_cnt_s;
 				t_start_key_n_s <= start_key_flank_v;
 				t_h_key_n_s <= h_key_flank_v;
 				t_m_key_n_s <= m_key_flank_v;
 				t_s_key_n_s <= s_key_flank_v;
 			end if;
-
+			out_time_s <= seconds_to_time_array(cnt_s);
 		end if;
 
 	end process;
