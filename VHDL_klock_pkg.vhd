@@ -5,23 +5,45 @@ use IEEE.numeric_std.all;
 
 
 package VHDL_klock_pkg is
-
+    type seven_seg_array_t is array (0 to 5) of std_logic_vector (6 downto 0);
     type time_array_t is array (0 to 5) of std_logic_vector (3 downto 0);
     function seconds_to_time_array(seconds : in natural) return time_array_t;
 	
+     
+    constant FREQUENCY_1HZ  : natural := 50000000;
+    constant FREQUENCY_2HZ  : natural := 25000000;
+    constant FREQUENCY_4HZ  : natural := 12500000;
+    constant FREQUENCY_8HZ  : natural := 6250000;
+    constant FREQUENCY_16HZ : natural := 3125000;
+    constant FREQUENCY_32HZ : natural := 1562500;
+    constant FREQUENCY_64HZ : natural := 781250;
+    constant FREQUENCY_128HZ: natural := 6250000;
+    constant FREQUENCY_TEST : natural := 5;
+
     component counter is
         generic (
-            CNT_1S_G : natural := 50000000;
-            CNT_LIM_G : natural := 86400 -- 3600 * 24 
+            
+            CNT_1S_G : natural := FREQUENCY_1HZ;
+            CNT_LIM_G : natural := 86399 -- 3600 * 24 
         );
         port (
             clk : in std_logic;
             rst_n : in std_logic;
-            key_n : in std_logic;
+            start_key_n : in std_logic;
+            h_key_n : in std_logic;
+            m_key_n : in std_logic;
+            s_key_n : in std_logic;
             out_time : out time_array_t
         );
     end component;
     
+    component seven_seg is
+        port
+        (
+            n_in : in  std_logic_vector(3 downto 0);
+            X	 : out std_logic_vector(6 downto 0)
+        );
+    end component;
 
 end package;
 

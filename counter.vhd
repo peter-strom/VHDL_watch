@@ -5,13 +5,16 @@ use IEEE.std_logic_unsigned.all;
 use WORK.VHDL_klock_pkg.all;
 entity counter is
 	generic (
-		CNT_1S_G : natural := 50000000;
+		CNT_1S_G : natural := FREQUENCY_1HZ;
 		CNT_LIM_G : natural := 86399 -- 3600 * 24 
 	);
 	port (
 		clk : in std_logic;
 		rst_n : in std_logic;
-		key_n : in std_logic;
+		start_key_n : in std_logic;
+		h_key_n : in std_logic;
+		m_key_n : in std_logic;
+		s_key_n : in std_logic;
 		out_time : out time_array_t
 	);
 end entity;

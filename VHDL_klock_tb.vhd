@@ -19,7 +19,7 @@ architecture tb of VHDL_Klock_tb is
 
 begin
     uut : counter
-    generic map(CNT_1S_G => 5, CNT_LIM_G => 86399)
+    generic map(CNT_1S_G => FREQUENCY_TEST, CNT_LIM_G => 86399)
     port map(
         clk => clk_s,
         rst_n => rst_n_s,
