@@ -5,33 +5,34 @@ use IEEE.std_logic_unsigned.all;
 use WORK.VHDL_klock_pkg.all;
 entity counter is
 	generic (
-		CNT_1S_G : natural := 50000000;
-		CNT_LIM_G : natural := 86399;
-		PAUSED_G : std_logic := '0';
-		COUNT_UP_G : std_logic := '1'
+		CNT_1S_G    : natural := 50000000;
+		CNT_LIM_G   : natural := 86399;
+		PAUSED_G    : std_logic := '0';
+		COUNT_UP_G  : std_logic := '1'
 	);
 	port (
-		clk : in std_logic;
-		rst_n : in std_logic;
+		clk         : in std_logic;
+		rst_n       : in std_logic;
 		start_key_n : in std_logic;
-		h_key_n : in std_logic;
-		m_key_n : in std_logic;
-		s_key_n : in std_logic;
-		cnt : out natural
+		h_key_n     : in std_logic;
+		m_key_n     : in std_logic;
+		s_key_n     : in std_logic;
+		cnt         : out natural
 
 	);
 end entity;
 
 architecture behaviour of counter is
-	signal cnt_s : natural := 0;
-	signal tick_s : natural := 0;
-	signal paused : std_logic := PAUSED_G;
+	signal cnt_s    : natural := 0;
+	signal tick_s   : natural := 0;
+	signal paused   : std_logic := PAUSED_G;
 begin
 
 	process (clk, rst_n) is
 	begin
 		if (rst_n = '0') then
 			cnt_s <= 0;
+			paused <= PAUSED_G;
 		elsif (rising_edge(clk)) then
 			if (start_key_n = '1') then
 				paused <= not paused;
