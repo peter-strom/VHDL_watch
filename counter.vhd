@@ -5,8 +5,10 @@ use IEEE.std_logic_unsigned.all;
 use WORK.VHDL_klock_pkg.all;
 entity counter is
 	generic (
-		CNT_1S_G : natural := FREQUENCY_1HZ;
-		CNT_LIM_G : natural := 86399 -- 3600 * 24 
+		CNT_1S_G : natural := 50000000;
+		CNT_LIM_G : natural := 86399;
+		PAUSED_G : std_logic := '0';
+		COUNT_UP_G : std_logic := '1'
 	);
 	port (
 		clk : in std_logic;
@@ -15,32 +17,51 @@ entity counter is
 		h_key_n : in std_logic;
 		m_key_n : in std_logic;
 		s_key_n : in std_logic;
-		out_time : out time_array_t
+		cnt : out natural
+
 	);
 end entity;
 
 architecture behaviour of counter is
-signal cnt_s : natural := 0;
-
+	signal cnt_s : natural := 0;
+	signal tick_s : natural := 0;
+	signal paused : std_logic := PAUSED_G;
 begin
 
-    process (clk, rst_n) is
-    begin
+	process (clk, rst_n) is
+	begin
 		if (rst_n = '0') then
 			cnt_s <= 0;
-			
-		
 		elsif (rising_edge(clk)) then
-			
-				if (cnt_s = CNT_LIM_G) then
-					cnt_s <= 0;
-				else
+			if (start_key_n = '1') then
+				paused <= not paused;
+			end if;
+			if (paused = '0') then
+				tick_s <= tick_s + 1;
+			end if;
+			if (h_key_n = '1') then
+				cnt_s <= cnt_s + 3600;
+			end if;
+			if (m_key_n = '1') then
+				cnt_s <= cnt_s + 60;
+			end if;
+			if (s_key_n = '1') then
+				cnt_s <= cnt_s + 1;
+			end if;
+			if (tick_s = CNT_1S_G) then
+				tick_s <= 0;
+				if (COUNT_UP_G = '1') then
 					cnt_s <= cnt_s + 1;
+				else
+					cnt_s <= cnt_s - 1;
 				end if;
-			
-		end if;
-    end process;
-	 
-	out_time <= seconds_to_time_array(cnt_s);
-end architecture;
+			end if;
+			if (cnt_s >= CNT_LIM_G) then
+				cnt_s <= 0;
+			end if;
 
+		end if;
+	end process;
+
+	cnt <= cnt_s;
+end architecture;

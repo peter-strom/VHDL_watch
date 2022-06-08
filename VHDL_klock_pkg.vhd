@@ -23,8 +23,10 @@ package VHDL_klock_pkg is
     component counter is
         generic (
             
-            CNT_1S_G : natural := FREQUENCY_1HZ;
-            CNT_LIM_G : natural := 86399 -- 3600 * 24 
+            CNT_1S_G : natural := 50000000;
+            CNT_LIM_G : natural := 86399; -- 3600 * 24
+            PAUSED_G : std_logic := '0';
+            COUNT_UP_G : std_logic := '1'
         );
         port (
             clk : in std_logic;
@@ -33,7 +35,7 @@ package VHDL_klock_pkg is
             h_key_n : in std_logic;
             m_key_n : in std_logic;
             s_key_n : in std_logic;
-            out_time : out time_array_t
+            cnt : out natural
         );
     end component;
     
