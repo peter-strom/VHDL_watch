@@ -82,10 +82,10 @@ begin
 
     stimuli : process
     begin
-      -- sim_comment_s <= set_sim_comment("reset");
-      -- rst_n_s <= '0';
-      -- wait for 5*CLK_PERIOD;
-      -- rst_n_s <= '1';
+       sim_comment_s <= set_sim_comment("reset");
+       rst_n_s <= '0';
+       wait for 5*CLK_PERIOD;
+       rst_n_s <= '1';
        wait for 5*CLK_PERIOD;
 
        sim_comment_S <= set_sim_comment("timer: 1h");
