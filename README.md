@@ -49,7 +49,7 @@ Fig.6 - Filmklipp på den färdiga konstruktionen.
 
 ## Diskussion
 
-Kul och givande projekt där det kändes som vi hade stor frihet i utformningen av klockan och dess funktioner. Att dessutom få utföra projektet tillsammans med en man samarbetar väldigt bra med bidrog till ökad kreativitet och utveckling. Mycket tack vare våra olika kunskapsnivåer där en är en van programmerare medan den andra kommer från hårdvarubakgrund. Detta lyste igenom i hur problem angreps och lösningar utformades. En hade lättare för tydliga och enkla lösningar medan den andra byggde en bättre grund som senare i projektet gjorde nya funktioner enkla att implementera.
+Kul och givande projekt där vi hade stor frihet i utformningen av klockan och dess funktioner. Att dessutom få utföra projektet tillsammans med en bra partner bidrog till ökad kreativitet och utveckling. Mycket tack vare våra olika kunskapsnivåer där en är en van programmerare medan den andra kommer från hårdvarubakgrund. Detta lyste igenom i hur problem angreps och lösningar utformades. En hade lättare för tydliga och enkla lösningar medan den andra byggde en bättre grund som senare i projektet gjorde nya funktioner enkla att implementera.
 
 Med Microsofts fantastiska VSCode-extension ”Liveshare” kunde vi dessutom sammarbeta på ett effektivt sätt över internet. Simuleringen delgavs via discords skärmdelning och test på FPGA streamades med en webcam.
 
