@@ -1,6 +1,6 @@
 # Projekt II - Digital konstruktion - Ela21, YRGO
 
-Handledare: Erik Jagre
+Handledare: Erik Jagre och Erik Pihl 
 
 Utfört av: Daniel Mentzer och Peter Strömblad
             
