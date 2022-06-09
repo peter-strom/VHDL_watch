@@ -13,10 +13,10 @@ entity counter is
 	port (
 		clk         : in std_logic;
 		rst_n       : in std_logic;
-		start_key_n : in std_logic;
-		h_key_n     : in std_logic;
-		m_key_n     : in std_logic;
-		s_key_n     : in std_logic;
+		start_key   : in std_logic;
+		h_key       : in std_logic;
+		m_key       : in std_logic;
+		s_key       : in std_logic;
 		cnt         : out natural
 
 	);
@@ -34,19 +34,19 @@ begin
 			cnt_s <= 0;
 			paused <= PAUSED_G;
 		elsif (rising_edge(clk)) then
-			if (start_key_n = '1') then
+			if (start_key = '1') then
 				paused <= not paused;
 			end if;
 			if (paused = '0') then
 				tick_s <= tick_s + 1;
 			end if;
-			if (h_key_n = '1') then
+			if (h_key = '1') then
 				cnt_s <= cnt_s + 3600;
 			end if;
-			if (m_key_n = '1') then
+			if (m_key = '1') then
 				cnt_s <= cnt_s + 60;
 			end if;
-			if (s_key_n = '1') then
+			if (s_key = '1') then
 				cnt_s <= cnt_s + 1;
 			end if;
 			if (tick_s = CNT_1S_G) then

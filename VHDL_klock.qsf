@@ -108,7 +108,7 @@ set_location_assignment PIN_W22 -to hex[5][2]
 set_location_assignment PIN_V21 -to hex[5][1]
 set_location_assignment PIN_M9 -to clk
 set_location_assignment PIN_AB12 -to func_sw
-set_location_assignment PIN_U13 -to rst_n
+set_location_assignment PIN_P22 -to rst_n
 set_location_assignment PIN_M6 -to h_key_n
 set_location_assignment PIN_M7 -to m_key_n
 set_location_assignment PIN_W9 -to s_key_n

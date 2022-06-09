@@ -21,12 +21,13 @@ architecture behaviour of VHDL_klock is
 	--w_ = watch
 	--t_ = timer
 
-	signal out_time_s                                      : time_array_t;
-	signal cnt_s, w_cnt_s, t_cnt_s                         : natural;
-	signal start_key_n_f, w_start_key_n_s, t_start_key_n_s : std_logic;
-	signal h_key_n_f, w_h_key_n_s, t_h_key_n_s             : std_logic;
-	signal m_key_n_f, w_m_key_n_s, t_m_key_n_s             : std_logic;
-	signal s_key_n_f, w_s_key_n_s, t_s_key_n_s             : std_logic;
+	signal out_time_s                                  : time_array_t;
+	signal cnt_s, w_cnt_s, t_cnt_s                     : natural;
+	signal start_key_n_f, w_start_key_s, t_start_key_s : std_logic;
+	signal h_key_n_f, w_h_key_s, t_h_key_s             : std_logic;
+	signal m_key_n_f, w_m_key_s, t_m_key_s             : std_logic;
+	signal s_key_n_f, w_s_key_s, t_s_key_s             : std_logic;
+	
 
 begin
 
@@ -40,10 +41,10 @@ begin
 	port map(
 		clk         => clk,
 		rst_n       => rst_n,
-		start_key_n => w_start_key_n_s,
-		h_key_n     => w_h_key_n_s,
-		m_key_n     => w_m_key_n_s,
-		s_key_n     => w_s_key_n_s,
+		start_key   => w_start_key_s,
+		h_key       => w_h_key_s,
+		m_key       => w_m_key_s,
+		s_key       => w_s_key_s,
 		cnt         => w_cnt_s
 	);
 
@@ -57,10 +58,10 @@ begin
 	port map(
 		clk         => clk,
 		rst_n       => rst_n,
-		start_key_n => t_start_key_n_s,
-		h_key_n     => t_h_key_n_s,
-		m_key_n     => t_m_key_n_s,
-		s_key_n     => t_s_key_n_s,
+		start_key   => t_start_key_s,
+		h_key       => t_h_key_s,
+		m_key       => t_m_key_s,
+		s_key       => t_s_key_s,
 		cnt         => t_cnt_s
 	);
 
@@ -97,9 +98,9 @@ begin
 
 	process (clk) is
 		variable start_key_flank_v : std_logic;
-		variable h_key_flank_v : std_logic;
-		variable m_key_flank_v : std_logic;
-		variable s_key_flank_v : std_logic;
+		variable h_key_flank_v     : std_logic;
+		variable m_key_flank_v     : std_logic;
+		variable s_key_flank_v     : std_logic;
 	begin
 		if rising_edge(clk) then
 			start_key_n_f <= start_key_n;
@@ -131,19 +132,20 @@ begin
 				s_key_flank_v := '0';
 			end if;
 			if (func_sw = '1') then -- wach
-				cnt_s           <= w_cnt_s;
-				w_start_key_n_s <= start_key_flank_v;
-				w_h_key_n_s     <= h_key_flank_v;
-				w_m_key_n_s     <= m_key_flank_v;
-				w_s_key_n_s     <= s_key_flank_v;
+				cnt_s         <= w_cnt_s;
+				w_start_key_s <= start_key_flank_v;
+				w_h_key_s     <= h_key_flank_v;
+				w_m_key_s     <= m_key_flank_v;
+				w_s_key_s     <= s_key_flank_v;
 			else -- timer
-				cnt_s           <= t_cnt_s;
-				t_start_key_n_s <= start_key_flank_v;
-				t_h_key_n_s     <= h_key_flank_v;
-				t_m_key_n_s     <= m_key_flank_v;
-				t_s_key_n_s     <= s_key_flank_v;
+				cnt_s         <= t_cnt_s;
+				t_start_key_s <= start_key_flank_v;
+				t_h_key_s     <= h_key_flank_v;
+				t_m_key_s     <= m_key_flank_v;
+				t_s_key_s     <= s_key_flank_v;
 			end if;
 			out_time_s <= seconds_to_time_array(cnt_s);
+			
 		end if;
 
 	end process;

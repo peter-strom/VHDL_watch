@@ -31,7 +31,7 @@ architecture tb of VHDL_Klock_tb is
     signal m_key_n_s         : std_logic         := '0';
     signal s_key_n_S         : std_logic         := '0';
     signal hex_s             : seven_seg_array_t := (others => (others => '0'));
-    signal sim_comment_s    : string(1 to COMMENT_LENGTH);
+    signal sim_comment_s     : string(1 to COMMENT_LENGTH);
     
     constant CLK_PERIOD      : time := 20 ns;
     constant SIM_TIME        : time := 200 * CLK_PERIOD;
@@ -82,10 +82,10 @@ begin
 
     stimuli : process
     begin
-       sim_comment_s <= set_sim_comment("reset");
-       rst_n_s <= '0';
-       wait for 5*CLK_PERIOD;
-       rst_n_s <= '1';
+      -- sim_comment_s <= set_sim_comment("reset");
+      -- rst_n_s <= '0';
+      -- wait for 5*CLK_PERIOD;
+      -- rst_n_s <= '1';
        wait for 5*CLK_PERIOD;
 
        sim_comment_S <= set_sim_comment("timer: 1h");

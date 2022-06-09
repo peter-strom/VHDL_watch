@@ -35,10 +35,10 @@ package VHDL_klock_pkg is
         port (
             clk         : in std_logic;
             rst_n       : in std_logic;
-            start_key_n : in std_logic;
-            h_key_n     : in std_logic;
-            m_key_n     : in std_logic;
-            s_key_n     : in std_logic;
+            start_key   : in std_logic;
+            h_key       : in std_logic;
+            m_key       : in std_logic;
+            s_key       : in std_logic;
             cnt         : out natural
         );
     end component;
