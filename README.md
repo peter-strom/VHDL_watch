@@ -16,8 +16,10 @@ Fig.1 - Knapparna som användes samt dess funktion.
 
 ## Resultat
 
-Den första och roligaste nöten att knäcka var hur klockan skulle räkna upp. Ett enkelt sätt att utforma klockan var att ha en räknare för sekunder, minuter och timmar. Och med hjälp av en carry-bit påverka den följande räknaren. Dock valdes en lösning som endast innefattar en räknare som räknar upp till 86400 vilket är antalet sekunder på ett dygn. Två instanser av räknaren implementerades, en för klockfunktion och en för timerfunktionen. Med hjälp av generic kunde vi enkelt välja om räknaren skulle räkna upp eller ner. Och blev en väldigt smidig lösning.
+Den första och roligaste nöten att knäcka var hur klockan skulle räkna upp. Ett enkelt sätt att utforma klockan var att ha en räknare för sekunder, minuter och timmar. Och med hjälp av en carry-bit påverka den följande räknaren. Dock valdes en lösning som endast innefattar en räknare som räknar upp till 86400 vilket är antalet sekunder på ett dygn. Två instanser av räknaren implementerades, en för klockfunktion och en för timerfunktionen. Med hjälp av generic kunde vi enkelt välja om räknaren skulle räkna upp eller ner.
+
 Ett enkelt Excel-dokument användes för att lösa problemet med att omvandla sekunderna till användbara värden för de sex olika sju-segments displayer. Men när vi visade konstruktionen i RTL Viewern såg vi att de båda räknarna inte delade “omvandlings-kretsen” vi just konstruerat. Detta löste sig när omvandlingen flyttades utanför if-satsen, se Fig. 3.
+
 Det vi inte löste var hur kretsen skall starta med en automatisk reset.
 
 
@@ -47,6 +49,7 @@ Fig.6 - Filmklipp på den färdiga konstruktionen.
 
 ## Diskussion
 
-Kul och givande projekt där det kändes som vi hade stor frihet i utformningen av klockan och dess funktioner. Att dessutom få utföra projektet tillsammans med en man samarbetar väldigt bra med bidrog till ökad kreativitet och utveckling. Mycket tack vare våra olika kunskapsnivåer på ett bra sätt där en är en van programmerare medan den andra kommer från hårdvarubakgrund. Vilket lyste igenom i hur problem angreps och lösningar utformades, en hade lättare för tydliga och enkla lösningar medan den andra byggde en bättre grund som senare i projektet gjorde nya funktioner enkla att implementera
+Kul och givande projekt där det kändes som vi hade stor frihet i utformningen av klockan och dess funktioner. Att dessutom få utföra projektet tillsammans med en man samarbetar väldigt bra med bidrog till ökad kreativitet och utveckling. Mycket tack vare våra olika kunskapsnivåer där en är en van programmerare medan den andra kommer från hårdvarubakgrund. Detta lyste igenom i hur problem angreps och lösningar utformades. En hade lättare för tydliga och enkla lösningar medan den andra byggde en bättre grund som senare i projektet gjorde nya funktioner enkla att implementera.
+
 Med Microsofts fantastiska VSCode-extension ”Liveshare” kunde vi dessutom sammarbeta på ett effektivt sätt över internet. Simuleringen delgavs via discords skärmdelning och test på FPGA streamades med en webcam.
 
