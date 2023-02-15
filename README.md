@@ -54,3 +54,4 @@ Kul och givande projekt där vi hade stor frihet i utformningen av klockan och d
 
 Med Microsofts fantastiska VSCode-extension ”Liveshare” kunde vi dessutom sammarbeta på ett effektivt sätt över internet. Simuleringen delgavs via discords skärmdelning och test på FPGA streamades med en webcam.
 
+TODO: Fixa bugg 23:59:59 -> 00:00:00 tar endast en halv sekund.
