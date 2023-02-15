@@ -54,4 +54,20 @@ Kul och givande projekt där vi hade stor frihet i utformningen av klockan och d
 
 Med Microsofts fantastiska VSCode-extension ”Liveshare” kunde vi dessutom sammarbeta på ett effektivt sätt över internet. Simuleringen delgavs via discords skärmdelning och test på FPGA streamades med en webcam.
 
-TODO: Fixa bugg 23:59:59 -> 00:00:00 tar endast en halv sekund.
+## TODO: Fixa bugg: 23:59:59 -> 00:00:00 går för fort.
+
+### Erik Jagre (20 juni 2022)
+Generellt:
+VG-nivå - en imponerande lösning som visar på god förståelse i kursens moment!
+
+Kommentar:
+* Elegant lösning med en ensam sekundräknare som ni sedan delar upp i ss/mm/hh.
+* Järvt att använda division, jag trodde inte Quartus skulle ställa upp på det. (har ni jämfört resursanvändningen före lösningen med separata räknare för ss/mm/hh?)
+* Men skiftar inte klockan över från 23:59:59 till 00:00:00 lite i hastigaste laget? jag är rädd att er klocka kommer gå 365 sekunder fel på ett år...
+* Er testbänk borde exekverat från 23:59:59 till 00:00:00 (då hade ni sett varför klockan drar sig lite)
+
+
+
+### Erik Jagre (23 juni 2022)
+Era ingångar är inte synkroniserade med dubbla vippor. Det finns risk att ni använder ett in-värde i er design som inte är av korrekt logisk nivå (varken ett eller noll).
+
